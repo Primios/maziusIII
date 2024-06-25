@@ -1,0 +1,27 @@
+default:
+    image:
+        name: maven:3.8.7-eclipse-temurin-17-alpine
+
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    -dir
+    - mvn compile
+
+test:
+  stage: test
+  script:
+    - mvn test
+
+deploy:
+  stage: deploy
+  script:
+    - mvn deploy
+  only:
+    - master
